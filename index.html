@@ -1,0 +1,85 @@
+ <!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>The HTML5 Herald</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <!-- <link rel="stylesheet" href="css/styles.css?v=1.0"> -->
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+<style type="text/css">
+	body , html{
+		font-family: helvetica;
+	}
+	#intro{
+		text-align: center;
+		font-color: #8A2BE2;
+		max-width: 500px;
+        padding:20px;
+        margin: 0 auto;
+    }
+	#map{
+	height: 180px;
+	width:100%;
+	background-color: #B0E0E6;
+		}
+	
+</style>
+<body>
+
+<div= intro>
+	<h1>Museums Around Central Park</h1>
+	<p>New York City is home to top-notch museums in art, architecture, photography, natural history, television, radio and technology. Click on the links below for more information</p>
+</div>
+
+<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+<div id="map"></div>
+<script type="text/javascript">
+	
+	 var layer = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',{
+  					attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
+		});
+
+	 var mapData=[
+	 {
+       name: "Museum of Modern Art",
+       coord: [40.764178,-73.977213]
+     },
+     {
+       name: "American Museum of Natural History",
+       coord: [40.781110,-73.973951]
+     },
+     {
+       name: "Metropolitan Museum of Art",
+      coord: [40.779420,-73.962965]
+   	},
+ 	{
+       name: "Cooper Hewit Design Museum",
+       coord: [40.785822,-73.957171]
+     },
+   	]	
+   	var centralPark = [40.782296,-73.965969]
+   	var myZoom = 15;
+
+	 var map: L.map('map').setView(centralPark,myZoom);
+	 map.addLayer(layer)
+
+   	mapData.forEach(function(element) {
+     var marker = L.marker(element.coord).addTo(map);
+ 
+     marker.bindPopup("<b>You are</b><br>looking at " + element.name)
+  		});
+
+
+</script>
+</body>
+</html>
