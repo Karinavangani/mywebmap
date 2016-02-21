@@ -27,9 +27,9 @@
         margin: 0 auto;
     }
 	#map{
-	height: 180px;
-	width:100%;
-	background-color: #B0E0E6;
+		height: 180px;
+		width:100%;
+		background-color: #B0E0E6;
 		}
 	
 </style>
@@ -45,8 +45,8 @@
 <div id="map"></div>
 <script type="text/javascript">
 	
-	 var layer = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',{
-  					attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
+	 var layer = L.tileLayer('https://api.mapbox.com/styles/v1/karinav/cikwxmom200dz98kmwcwkvhw0.html?title=true&access_token=pk.eyJ1Ijoia2FyaW5hdiIsImEiOiJjaWt3eDgwcjEwMGwydjJtM3QxdTVsMW01In0.r74mc5YN0ttX1THNAYDZYA#12.729825571144127/40.77981892547774/-73.95488765831281/0',{
+  					attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>'
 		});
 
 	 var mapData=[
@@ -70,13 +70,13 @@
    	var centralPark = [40.782296,-73.965969]
    	var myZoom = 15;
 
-	 var map: L.map('map').setView(centralPark,myZoom);
+	 var map:L.map('map').setView(centralPark,myZoom);
 	 map.addLayer(layer)
 
    	mapData.forEach(function(element) {
-     var marker = L.marker(element.coord).addTo(map);
+     	var marker = L.marker(element.coord).addTo(map);
  
-     marker.bindPopup("<b>You are</b><br>looking at " + element.name)
+     	marker.bindPopup("<b>You are</b><br>looking at " + element.name)
   		});
 
 
