@@ -28,16 +28,16 @@
     #intro{
     text-align: center;
     font-color: #8A2BE2;
-    max-width: 500px;
+    max-width: 900px;
     padding:20px;
     margin: 0 auto;
-    background-color: #B0E0E6
+    background-color: #B0E0E6;
       }
 	
 </style>
 <body>
 
-<div= intro>
+<div id = "intro">
 	<h1>Museums Around Central Park</h1>
 	<p>New York City is home to top-notch museums in art, architecture, photography, natural history, television, radio and technology. </p>
 </div>
@@ -47,8 +47,9 @@
 <div id="map"></div>
 <script type="text/javascript">
 	
-	 var layer = L.tileLayer('https://.api.mapbox.com/styles/v1/karinav/cikwxmom200dz98kmwcwkvhw0.html?title=true&access_token=pk.eyJ1Ijoia2FyaW5hdiIsImEiOiJjaWt3eDgwcjEwMGwydjJtM3QxdTVsMW01In0.r74mc5YN0ttX1THNAYDZYA#12.729825571144127/40.77981892547774/-73.95488765831281/0',{
-  					attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>'
+	 var layer = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
+            //http://mapbox.com">Mapbox</a>'
           
             		});
 
