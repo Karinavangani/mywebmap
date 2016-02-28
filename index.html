@@ -16,23 +16,30 @@
 </head>
 <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
 <style type="text/css">
-	body , html{
-		font-family: helvetica;
-	}
+	 body , html{
+    font-family: helvetica;
+    background: #a3a3c2;
+    font-color: #f0f0f5;
+
+  }
 	
 	#map{
 		height: 600px;
 		width:100%;
 		;
-		}
-    #intro{
+		  }
+
+  #intro{
     text-align: center;
-    font-color: #8A2BE2;
-    max-width: 900px;
+    /*font-color: #f0f0f5;*/
+    max-width: 1000px;
     padding:20px;
     margin: 0 auto;
-    background-color: #B0E0E6;
-      }
+    /*background-color: #B0E0E6;*/
+        }
+
+
+
 	
 </style>
 <body>
@@ -47,11 +54,33 @@
 <div id="map"></div>
 <script type="text/javascript">
 	
-	 var layer = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-  attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
-            //http://mapbox.com">Mapbox</a>'
+	 // var layer = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+  // attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
+            
           
-            		});
+  //           		});
+
+    var osmLink = 'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
+    thunLink = '<http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png';
+
+    var osmUrl =' http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
+    osmAttrib = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+    landUrl = 'http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',
+    thunAttrib = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>';
+
+    var osmMap = L.tileLayer(osmUrl, {attribution: osmAttrib}),
+       landMap = L.tileLayer(landUrl, {attribution: thunAttrib});
+
+   
+    var map = L.map('map', {layers: [osmMap] }).setView([40.782296,-73.965969], 13);
+
+    var baseLayers = {
+          "Light": osmMap,
+          "Dark": landMap
+        };
+
+L.control.layers(baseLayers).addTo(map);
+
 
 	 var mapData=[
 	 {
@@ -74,14 +103,17 @@
    	var centralPark = [40.782296,-73.965969]
    	var myZoom = 12;
 
-	 var map=L.map('map').setView(centralPark,myZoom);
-	 map.addLayer(layer)
+
+	 // var map=L.map('map').setView(centralPark,myZoom);
+	 // map.addLayer(layer)
 
    	mapData.forEach(function(element) {
      	var marker = L.marker(element.coord).addTo(map);
  
      	marker.bindPopup("<b>You are</b><br>looking at <br>" + element.name)
   		});
+    
+
 
 
 </script>
